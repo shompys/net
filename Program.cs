@@ -1,6 +1,13 @@
+// using CoreSchool.Entities;
+// var schoolLegacy = new School("university Jonas", "av. siempreviva 123", 1900, "argentina", "Buenos Aires", TypesSchool.primaria);
+// Tanteador.jugandoList(schoolLegacy);
+// Tanteador.jugandoArray(schoolLegacy);
+using CoreEscuela;
 
-var school = new CoreSchool.Entities.School("university Jonas", "av. siempreviva 123", 1900, "argentina", "Buenos Aires");
+var engine = new EscuelaEngine();
 
-school.Timbrar();
-Console.WriteLine(school);
+engine.Inicializar();
+
+engine?.Escuela?.printListCursos();
+
 

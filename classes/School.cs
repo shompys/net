@@ -1,6 +1,8 @@
+using static System.Console; // evito repetir Console.WriteLine
+
 namespace CoreSchool.Entities {
 
-    class School {
+    public class School {
         // string name;
         
         // public string Name {
@@ -15,18 +17,49 @@ namespace CoreSchool.Entities {
 
         public string City { get; set; }
 
-        // public School(string name, string address, int yearCreated, string country, string city) {
-        //     this.name = name;
-        //     this.address = address;
-        //     this.YearCreated = yearCreated;
-        //     this.Country = country;
-        //     this.City = city;
-        // }
-        public School(string name, string address, int yearCreated, string country, string city
-        ) => (Name, Address, YearCreated, Country, City) = (name, address, yearCreated, country, city);
+        public TypesSchool Type { get; set; }
+
+        public Curso[]? Cursos { get; set; }
+        public List<Curso>? ListCursos { get; set; }
+
+        public School(string name, string address, int yearCreated, TypesSchool type, string country="", string city="") {
+            this.Name = name;
+            this.Address = address;
+            this.YearCreated = yearCreated;
+            this.Type = type;
+            this.Country = country;
+            this.City = city;
+        }
+        public School(
+            string name, 
+            string address, 
+            int yearCreated, 
+            string country, 
+            string city,
+            TypesSchool type
+        ) => (Name, Address, YearCreated, Country, City, Type) = (name, address, yearCreated, country, city, type);
 
         public void Timbrar() {
             Console.WriteLine($"Riiing");
         }
+
+        public override string ToString()
+        {
+            return "School: { " + $"Name: {this.Name}, Address: {this.Address}, YearCreated: {this.YearCreated}, Country: {this.Country}, City: {this.City}, Type: {this.Type}, Cursos: {this.Cursos}" + " }";
+        }
+        public void imprimirCursos(){
+            if(this.Cursos == null) return;
+            foreach(Curso curso in this.Cursos){
+                WriteLine(curso.Name);
+            }
+        }
+        public void printListCursos(){
+            if(this.ListCursos == null) return;
+            foreach(Curso listCurso in this.ListCursos){
+                WriteLine(listCurso);
+            }
+            CoreEscuela.Util.Printer.DibujarLinea(3000);
+        }
+
     }
 }
